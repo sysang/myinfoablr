@@ -1,0 +1,6 @@
+location /media/ {
+    alias /var/media/;
+    autoindex off;
+    expires 3600;
+    access_log off;
+}

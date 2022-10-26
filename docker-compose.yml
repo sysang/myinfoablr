@@ -1,0 +1,61 @@
+version: "3.9"
+
+x-django-app-variables: &django-app-variables
+  APP_PORT: 8000
+
+x-database-credentials: &database-credentials
+  POSTGRESQL_HOST: "db"
+  POSTGRESQL_PORT: "5432"
+  POSTGRESQL_USERNAME: "${POSTGRESQL_USERNAME:-myinfoablrdb}"
+  POSTGRESQL_PASSWORD: "${POSTGRESQL_PASSWORD:-Qwer!234}"
+  POSTGRESQL_DATABASE: "${POSTGRESQL_DATABASE:-myinfoablrdb}"
+
+x-nginx-host-variables: &nginx-host-variables
+  APP_HOST: "myinfoablrapp-app-1:8000"
+
+services:
+  server:
+    image: "myinfoablr/mydjango"
+    build:
+      context: "./server"
+      dockerfile: "Dockerfile"
+    volumes:
+      - "./server:/usr/src/app"
+      - "./mounts/server/logs:/var/logs"
+      - "./mounts/server/static:/var/static"
+      - "./mounts/server/media:/var/media"
+    environment:
+      <<: *django-app-variables
+      <<: *database-credentials
+    depends_on:
+      - "db"
+
+  db:
+    restart: on-failure:5
+    image: "bitnami/postgresql:11.9.0"
+    ports:
+      - "54321:5432"
+    environment:
+      <<: *database-credentials
+    volumes:
+      - ./mounts/db:/bitnami/postgresql
+
+  httpd:
+    restart: on-failure:5
+    image: "nginx:1.21.1"
+    ports:
+      - "8080:80"
+      - "4443:443"
+    volumes:
+      - "./client/html:/var/www/html"
+      - "./docker/nginx/nginx.conf:/etc/nginx/nginx.conf"
+      - "./docker/nginx/templates:/etc/nginx/templates"
+      - "./mounts/nginx/logs:/var/logs"
+      - "./mounts/server/static:/var/static"
+      - "./mounts/server/media:/var/media"
+    environment:
+      <<: *nginx-host-variables
+    depends_on:
+      - "server"
+
+

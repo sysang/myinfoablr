@@ -1,0 +1,16 @@
+server {
+    listen 80;
+    server_name server.dsysang.site;
+
+    include conf.d/common.conf;
+    include conf.d/location_media.conf;
+
+    location / {
+      try_files __ @proxy_to_app;
+    }
+
+    location @proxy_to_app {
+      include conf.d/proxy_params.conf;
+      proxy_pass http://app_server;
+    }
+}
