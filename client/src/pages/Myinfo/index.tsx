@@ -3,10 +3,10 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import { BsButton } from '../../components/Buttons'
-
 import styles from './index.module.scss';
 import banner from './banner-personal.png'
+
+import { BsButton } from '../../components/Buttons'
 
 function Myinfo() {
   return (
