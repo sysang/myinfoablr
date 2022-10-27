@@ -9,7 +9,6 @@ import {
 import reportWebVitals from './reportWebVitals';
 import './index.scss';
 import Myinfo from './pages/Myinfo';
-import PassLogin from './pages/PassLogin';
 
 const router = createBrowserRouter([
   {
@@ -17,8 +16,8 @@ const router = createBrowserRouter([
     element: <Myinfo />,
   },
   {
-    path: "/pass/",
-    element: <PassLogin />,
+    path: "/callback",
+    element: <Myinfo />,
   },
 ]);
 
