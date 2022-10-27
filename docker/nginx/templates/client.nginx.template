@@ -1,10 +1,14 @@
 server {
     listen 80;
     server_name myinfoablr.dsysang.site;
-    index index.html;
     root /var/www/html;
 
     include conf.d/common.conf;
+
+    location / {
+      index  index.html;
+      try_files $uri $uri/ /index.html?$args;
+    }
 
     # serve static files
     location ~ ^/(images|javascript|js|css|flash|media|static)/  {

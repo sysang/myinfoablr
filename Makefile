@@ -1,14 +1,18 @@
 SHELL=/bin/sh
 
-app_shell:
+server_shell:
 	docker exec -it myinfoablr-server-1 bash -c 'python manage.py shell'
 
-app_collectstatic:
+server_collectstatic:
 	docker exec myinfoablr-server-1 bash -c 'python manage.py collectstatic'
 
-app_makemigrations:
+server_makemigrations:
 	docker exec myinfoablr-server-1 bash -c 'python manage.py makemigrations'
 
-app_migrate:
+server_migrate:
 	docker exec myinfoablr-server-1 bash -c 'python manage.py migrate'
+
+client_build:
+	cd client && npm run build
+
 

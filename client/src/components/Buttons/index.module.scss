@@ -1,0 +1,19 @@
+.button {
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 8px 15px;
+  border-radius: 3px;
+  border-color: transparent;
+  box-shadow: 0 3px 20px rgb(0 0 0 / 16%);
+  background: #F05F40;
+  background: -moz-linear-gradient(left, #3996f4 0%, #5d5ffa 100%);
+  background: -webkit-linear-gradient(left, #F05F40 0%,#fa9e5d 100%);
+  background: linear-gradient(to right, #F05F40 0%, #fa9e5d 51%, #F05F40 100%);
+  background-size: 200% auto;
+  transition: all 0.4s ease 0s;
+}
+
+.button:hover {
+  border-color: transparent;
+  background-position: right center;
+}
