@@ -1,2 +1,21 @@
 ALLOWED_HOSTS = []
 SECRET_KEY = ''
+CORS_ORIGIN_WHITELIST = []
+
+CERT_VERIFY = False
+
+MYINFO_ROOT = os.environ.get("MYINFO_ROOT", "https://test.api.myinfo.gov.sg/com/v3")
+MYINFO_CLIENT_ID = os.environ.get("MYINFO_CLIENT_ID", "STG2-MYINFO-SELF-TEST")
+MYINFO_SECRET = os.environ.get("MYINFO_SECRET", "44d953c796cccebcec9bdc826852857ab412fbe2")
+
+MYINFO_ATTRS = (
+    "uinfin,name,sex,race,nationality,dob,email,mobileno,regadd,housingtype,hdbtype,marital,edulevel,"
+    "ownerprivate,cpfcontributions,cpfbalances,"
+    "birthcountry,residentialstatus,"
+    "aliasname,marriedname,passtype,employmentsector,noahistory"
+)
+
+MYINFO_CALLBACK_URL = 'http://localhost:3001/callback'
+
+MYINFO_PRIVATE_KEY = ""
+MYINFO_PUBLIC_CERT = ""

@@ -44,7 +44,7 @@ services:
     restart: on-failure:5
     image: "nginx:1.21.1"
     ports:
-      - "8080:80"
+      - "3001:80"
       - "4443:443"
     volumes:
       - "./client/html:/var/www/html"

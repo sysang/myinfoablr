@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import { getEnv } from '../../auth'
+import { getAuthoriseUrl } from '../../api/auth'
+import { getMyinfo } from '../../api/myinfo'
 
 import styles from './index.module.scss';
 import banner from './banner-personal.png'
@@ -11,18 +12,25 @@ import banner from './banner-personal.png'
 import { BsButton } from '../../components/Buttons'
 
 function Myinfo() {
-    const login = () => {
-        getEnv().then((response) => {
-            const {authApiUrl, clientId, attributes, purpose, state, redirectUrl} = response.data
-            const authoriseUrl = authApiUrl + "?client_id=" + clientId +
-                "&attributes=" + attributes +
-                "&purpose=" + purpose +
-                "&state=" + encodeURIComponent(state)  +
-                "&redirect_uri=" + redirectUrl;
-
-            window.location.href = authoriseUrl;
-        })
+    const [ myinfo, setMyinfo ] = useState({})
+    const login = async function () {
+        const data = await getAuthoriseUrl()
+        const { authoriseUrl } = data
+        window.location.href = authoriseUrl;
     }
+
+    const requestMyinfo = async function(code: String) {
+        const data = await getMyinfo(code)
+        console.log(data)
+    }
+
+    useEffect(() => {
+        const queryParams = new URLSearchParams(window.location.search);
+        const code = queryParams.get('code')
+        if (code) {
+            requestMyinfo(code)
+        }
+    })
 
     return (
         <Container className="Myinfo" as="section">
