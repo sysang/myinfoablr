@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,9 +11,17 @@ import styles from './index.module.scss';
 import banner from './banner-personal.png'
 
 import { BsButton } from '../../components/Buttons'
+import MyinfoForm from './form'
+import { setInfo } from './slice'
 
 function Myinfo() {
-    const [ myinfo, setMyinfo ] = useState({})
+    // const [ myinfo, setMyinfo ] = useState({})
+    //@ts-ignore
+    const myinfo = useSelector((state) => state.myinfo)
+    const dispatch = useDispatch();
+
+    const [ readOnly, setReadOnly ] = useState({})
+
     const login = async function () {
         const data = await getAuthoriseUrl()
         const { authoriseUrl } = data
@@ -21,19 +30,28 @@ function Myinfo() {
 
     const requestMyinfo = async function(code: String) {
         const data = await getMyinfo(code)
-        console.log(data)
+        let _readOnly = {}
+
+        for (let prop in data) {
+            //@ts-ignore
+            _readOnly[prop] = !!data[prop]
+        }
+        setReadOnly(_readOnly)
+
+        dispatch(setInfo(data))
     }
 
     useEffect(() => {
         const queryParams = new URLSearchParams(window.location.search);
         const code = queryParams.get('code')
-        if (code) {
+        //@ts-ignore
+        if (code && !myinfo.uinfin) {
             requestMyinfo(code)
         }
     })
 
     return (
-        <Container className="Myinfo" as="section">
+        <Container className="Myinfo py-md-5" as="section">
             <Row>
                 <Col md={6}>
                     <div className="vh-100 d-flex align-items-center">
@@ -58,6 +76,11 @@ function Myinfo() {
                             <img src={banner} className="w-100"/>
                         </div>
                     </div>
+                </Col>
+            </Row>
+            <Row className="justify-content-around">
+                <Col md={6}>
+                    <MyinfoForm readOnly={readOnly} myinfo={myinfo}/>
                 </Col>
             </Row>
         </Container>

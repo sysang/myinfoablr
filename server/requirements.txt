@@ -5,6 +5,4 @@ requests~=2.23.0
 django-cors-headers~=2.5.3
 PyJWT~=2.6.0
 jwcrypto~=1.4.2
-
-
-
+dpath~=2.0.6
