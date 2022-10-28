@@ -3,16 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Spinner from 'react-bootstrap/Spinner';
 
 import { getAuthoriseUrl } from '../../api/auth'
-import { getMyinfo } from '../../api/myinfo'
 
 import styles from './index.module.scss';
 import banner from './banner-personal.png'
 
 import { BsButton } from '../../components/Buttons'
 import MyinfoForm from './form'
-import { setInfo } from './slice'
+import { setInfo, fetchInfo } from './slice'
 
 function Myinfo() {
     // const [ myinfo, setMyinfo ] = useState({})
@@ -28,30 +28,34 @@ function Myinfo() {
         window.location.href = authoriseUrl;
     }
 
-    const requestMyinfo = async function(code: String) {
-        const data = await getMyinfo(code)
-        let _readOnly = {}
-
-        for (let prop in data) {
-            //@ts-ignore
-            _readOnly[prop] = !!data[prop]
-        }
-        setReadOnly(_readOnly)
-
-        dispatch(setInfo(data))
-    }
-
     useEffect(() => {
         const queryParams = new URLSearchParams(window.location.search);
         const code = queryParams.get('code')
         //@ts-ignore
-        if (code && !myinfo.uinfin) {
-            requestMyinfo(code)
+        if (code && !myinfo.isLoading && !myinfo.uinfin) {
+            //@ts-ignore
+            dispatch(fetchInfo(code))
         }
     })
 
+    //@ts-ignore
+    if (myinfo.uinfin && !readOnly.uinfin) {
+        let _readOnly = {}
+        for (let prop in myinfo) {
+            //@ts-ignore
+            _readOnly[prop] = !!myinfo[prop]
+        }
+        setReadOnly(_readOnly)
+    }
+
+
     return (
-        <Container className="Myinfo py-md-5" as="section">
+        <Container className={`py-md-5 position-relative`} as="section">
+            {myinfo.isLoading &&
+            <div className={`${styles.overlay} d-flex justify-content-center align-items-center`}>
+                <Spinner animation="border" variant="success" />
+            </div>
+            }
             <Row>
                 <Col md={6}>
                     <div className="vh-100 d-flex align-items-center">

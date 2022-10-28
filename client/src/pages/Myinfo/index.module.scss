@@ -25,3 +25,14 @@
   left: 58px;
   top: 143px;
 }
+
+.overlay {
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: rgba(238, 238, 238, 0.70);
+    overflow: hidden;
+}
