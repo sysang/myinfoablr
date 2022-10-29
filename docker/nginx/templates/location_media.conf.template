@@ -4,3 +4,10 @@ location /media/ {
     expires 3600;
     access_log off;
 }
+
+location /static/ {
+    alias /var/static/;
+    autoindex off;
+    expires 3600;
+    access_log off;
+}
