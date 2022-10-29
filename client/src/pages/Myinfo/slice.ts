@@ -1,16 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { getMyinfo } from '../../api/myinfo'
+import { login } from '../../api/auth'
 
 const initialState = {
     isLoading: false,
     isLoaded: false,
+    isError: false,
 }
 
-export const fetchInfo = createAsyncThunk(
-    'myinfo/fetchInfo',
+export const requestLogin = createAsyncThunk(
+    'myinfo/requestLogin',
     async (code: String) => {
-        const response = await getMyinfo(code)
+        const response = await login(code)
         return response
     }
 );
@@ -32,10 +33,15 @@ export const myinfoSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchInfo.pending, (state) => {
+            .addCase(requestLogin.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(fetchInfo.fulfilled, (state, action) => {
+            .addCase(requestLogin.rejected, (state) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.isLoaded = true;
+            })
+            .addCase(requestLogin.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isLoaded = true;
                 for (let field in action.payload) {

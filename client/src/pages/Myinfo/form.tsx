@@ -10,6 +10,7 @@ import 'react-tabs/style/react-tabs.css';
 import * as dayjs from 'dayjs'
 
 
+import styles from './index.module.scss';
 import { BsButton } from '../../components/Buttons'
 import { setInfo } from './slice'
 

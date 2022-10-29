@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
+import { ToastContainer, toast } from 'react-toastify';
 
 import { getAuthoriseUrl } from '../../api/auth'
 
@@ -12,10 +14,11 @@ import banner from './banner-personal.png'
 
 import { BsButton } from '../../components/Buttons'
 import MyinfoForm from './form'
-import { setInfo, fetchInfo } from './slice'
+import { setInfo, requestLogin } from './slice'
 
 function Myinfo() {
-    // const [ myinfo, setMyinfo ] = useState({})
+    const navigate = useNavigate();
+
     //@ts-ignore
     const myinfo = useSelector((state) => state.myinfo)
     const dispatch = useDispatch();
@@ -34,7 +37,8 @@ function Myinfo() {
         //@ts-ignore
         if (code && !myinfo.isLoading && !myinfo.isLoaded) {
             //@ts-ignore
-            dispatch(fetchInfo(code))
+            dispatch(requestLogin(code))
+            navigate("/");
         }
     })
 
@@ -46,6 +50,11 @@ function Myinfo() {
             _readOnly[prop] = !!myinfo[prop]
         }
         setReadOnly(_readOnly)
+    }
+
+    //@ts-ignore
+    if (myinfo.isError) {
+        toast.error("Server got error, please contact support or try again later.");
     }
 
 
@@ -87,6 +96,19 @@ function Myinfo() {
                     <MyinfoForm readOnly={readOnly} myinfo={myinfo}/>
                 </Col>
             </Row>
+            <ToastContainer
+                position="top-right"
+                autoClose={10000}
+                hideProgressBar={true}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
+
         </Container>
     );
 }

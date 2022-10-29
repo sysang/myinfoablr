@@ -9,6 +9,4 @@ async function getMyinfo(code: String) {
     return response.data
 }
 
-
-
 export { getMyinfo }

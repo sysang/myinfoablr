@@ -6,5 +6,5 @@ app_name = 'myinfoablr'
 
 urlpatterns = [
     path('get_authorise_url', views.get_authorise_url, name='get_authorise_url'),
-    path('data', views.get_myinfo, name='data'),
+    path('login', views.login, name='login'),
 ]

@@ -31,8 +31,8 @@ def get_authorise_url(request):
 
     return RestResponse({ 'authoriseUrl': authorise_url })
 
-@api_view(['GET', 'POST'])
-def get_myinfo(request):
+@api_view(['POST'])
+def login(request):
     code = ""
     access_token = ""
     sub = ""
@@ -60,11 +60,6 @@ def get_myinfo(request):
                 sub: {sub}.", exc_info=e, stack_info=True)
 
         return RestResponse({'error': True, 'message': 'Bad Request'}, status=HTTP_400_BAD_REQUEST)
-
-    # import json
-    # from pathlib import Path
-    # filepath = Path(__file__).parent / 'tests/data/myinfo_person_data.json'
-    # person_data = json.load(filepath.open())
 
     try:
         formated_data = format_myinfo_data(person_data)
