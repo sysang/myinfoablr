@@ -248,38 +248,38 @@ const IncomeInfo = (props) => {
             <div>
                 <Row className="mb-3">
                     <Col md={6} className="text-start fw-bolder">Year of Assessment</Col>
-                    <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[1] ? myinfo.noas[1].yearofassessment : ''}</Col>
                     <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[0] ? myinfo.noas[0].yearofassessment : ''}</Col>
+                    <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[1] ? myinfo.noas[1].yearofassessment : ''}</Col>
                 </Row>
                 <Row className="mb-3">
                     <Col md={6} className="text-start">Employment</Col>
-                    <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[1] ? myinfo.noas[1].employment : ''}</Col>
                     <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[0] ? myinfo.noas[0].employment : ''}</Col>
+                    <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[1] ? myinfo.noas[1].employment : ''}</Col>
                 </Row>
                 <Row className="mb-3">
                     <Col md={6} className="text-start">Trade</Col>
-                    <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[1] ? myinfo.noas[1].trade : ''}</Col>
                     <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[0] ? myinfo.noas[0].trade : ''}</Col>
+                    <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[1] ? myinfo.noas[1].trade : ''}</Col>
                 </Row>
                 <Row className="mb-3">
                     <Col md={6} className="text-start">Interest</Col>
-                    <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[1] ? myinfo.noas[1].interest : ''}</Col>
                     <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[0] ? myinfo.noas[0].interest : ''}</Col>
+                    <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[1] ? myinfo.noas[1].interest : ''}</Col>
                 </Row>
                 <Row className="mb-3">
                     <Col md={6} className="text-start">Rent</Col>
-                    <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[1] ? myinfo.noas[1].rent : ''}</Col>
                     <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[0] ? myinfo.noas[0].rent : ''}</Col>
+                    <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[1] ? myinfo.noas[1].rent : ''}</Col>
                 </Row>
                 <Row className="mb-3">
                     <Col md={6} className="text-start fw-bolder">Total income</Col>
-                    <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[1] ? myinfo.noas[1].amount : ''}</Col>
                     <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[0] ? myinfo.noas[0].amount : ''}</Col>
+                    <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[1] ? myinfo.noas[1].amount : ''}</Col>
                 </Row>
                 <Row className="mb-3">
                     <Col md={6} className="text-start fw-bolder">Tax Clearance</Col>
-                    <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[1] ? myinfo.noas[1].taxclearance : ''}</Col>
                     <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[0] ? myinfo.noas[0].taxclearance : ''}</Col>
+                    <Col md={3} className="text-end">{myinfo.noas && myinfo.noas[1] ? myinfo.noas[1].taxclearance : ''}</Col>
                 </Row>
             </div>
             <h5 className="my-4">Other income Information</h5>
@@ -331,7 +331,7 @@ const IncomeInfo = (props) => {
                 />
             </InputGroup>
             <h5 className="my-4">CPF Contributions History</h5>
-            <Table striped hover borderless={true} bordered={false}>
+            <Table className={styles.cpf_talbe} striped hover borderless={true} bordered={false}>
                 <thead>
                     <tr>
                         <th>For Month</th>

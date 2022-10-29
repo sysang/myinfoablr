@@ -32,7 +32,7 @@ function Myinfo() {
         const queryParams = new URLSearchParams(window.location.search);
         const code = queryParams.get('code')
         //@ts-ignore
-        if (code && !myinfo.isLoading && !myinfo.uinfin) {
+        if (code && !myinfo.isLoading && !myinfo.isLoaded) {
             //@ts-ignore
             dispatch(fetchInfo(code))
         }

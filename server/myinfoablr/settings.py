@@ -19,6 +19,8 @@ INSTALLED_APPS = [
     'myinfoablr',
     'myinfoapi',
     'corsheaders',
+    'django_db_logger',
+    'rest_framework',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -140,6 +142,10 @@ LOGGING = {
             'backupCount': 30,
             'formatter': 'verbose'
         },
+        'db_log': {
+            'level': 'ERROR',
+            'class': 'django_db_logger.db_log_handler.DatabaseLogHandler'
+        },
     },
     'loggers': {
         'django': {
@@ -147,6 +153,16 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        'db': {
+            'handlers': ['db_log'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        # 'django.request': {
+        #     'handlers': ['db_log'],
+        #     'level': 'ERROR',
+        #     'propagate': False,
+        # }
     },
 }
 

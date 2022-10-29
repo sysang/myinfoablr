@@ -4,6 +4,7 @@ import { getMyinfo } from '../../api/myinfo'
 
 const initialState = {
     isLoading: false,
+    isLoaded: false,
 }
 
 export const fetchInfo = createAsyncThunk(
@@ -36,7 +37,7 @@ export const myinfoSlice = createSlice({
             })
             .addCase(fetchInfo.fulfilled, (state, action) => {
                 state.isLoading = false;
-                console.log(action)
+                state.isLoaded = true;
                 for (let field in action.payload) {
                     //@ts-ignore
                     state[field] = action.payload[field]
