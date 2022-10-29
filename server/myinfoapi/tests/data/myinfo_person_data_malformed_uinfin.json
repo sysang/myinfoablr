@@ -1,0 +1,284 @@
+{
+  "employmentsector": {
+    "lastupdated": "2022-10-27",
+    "source": "3",
+    "classification": "C",
+    "value": ""
+  },
+  "uinfin": {
+    "lastupdated": "2022-10-27",
+    "source": "1",
+    "classification": "C",
+    "malformed_value": "S9812387C"
+  },
+  "name": {
+    "lastupdated": "2022-10-27",
+    "source": "1",
+    "classification": "C",
+    "value": "HOWARD CHEN YU SHENG"
+  },
+  "sex": {
+    "lastupdated": "2022-10-27",
+    "code": "M",
+    "source": "1",
+    "classification": "C",
+    "desc": "MALE"
+  },
+  "race": {
+    "lastupdated": "2022-10-27",
+    "code": "CN",
+    "source": "1",
+    "classification": "C",
+    "desc": "CHINESE"
+  },
+  "nationality": {
+    "lastupdated": "2022-10-27",
+    "code": "SG",
+    "source": "1",
+    "classification": "C",
+    "desc": "SINGAPORE CITIZEN"
+  },
+  "dob": {
+    "lastupdated": "2022-10-27",
+    "source": "1",
+    "classification": "C",
+    "value": "1998-10-06"
+  },
+  "email": {
+    "lastupdated": "2022-10-27",
+    "source": "4",
+    "classification": "C",
+    "value": ""
+  },
+  "mobileno": {
+    "lastupdated": "2022-10-27",
+    "source": "4",
+    "classification": "C",
+    "areacode": {
+      "value": ""
+    },
+    "prefix": {
+      "value": ""
+    },
+    "nbr": {
+      "value": ""
+    }
+  },
+  "regadd": {
+    "country": {
+      "code": "SG",
+      "desc": "SINGAPORE"
+    },
+    "unit": {
+      "value": "58"
+    },
+    "street": {
+      "value": "PUNGGOL FIELD"
+    },
+    "lastupdated": "2022-10-27",
+    "block": {
+      "value": "101B"
+    },
+    "source": "1",
+    "postal": {
+      "value": "822101"
+    },
+    "classification": "C",
+    "floor": {
+      "value": "05"
+    },
+    "type": "SG",
+    "building": {
+      "value": ""
+    }
+  },
+  "housingtype": {
+    "lastupdated": "2022-10-27",
+    "code": "",
+    "source": "1",
+    "classification": "C",
+    "desc": ""
+  },
+  "hdbtype": {
+    "lastupdated": "2022-10-27",
+    "code": "114",
+    "source": "1",
+    "classification": "C",
+    "desc": "4-ROOM FLAT (HDB)"
+  },
+  "marital": {
+    "lastupdated": "2022-10-27",
+    "code": "1",
+    "source": "1",
+    "classification": "C",
+    "desc": "SINGLE"
+  },
+  "edulevel": {
+    "lastupdated": "2022-10-27",
+    "code": "",
+    "source": "2",
+    "classification": "C",
+    "desc": ""
+  },
+  "ownerprivate": {
+    "lastupdated": "2022-10-27",
+    "source": "1",
+    "classification": "C",
+    "value": false
+  },
+  "cpfcontributions": {
+    "lastupdated": "2022-10-27",
+    "source": "1",
+    "history": [
+      {
+        "date": {
+          "value": "2021-08-25"
+        },
+        "employer": {
+          "value": "NEED ALL COMPANY"
+        },
+        "amount": {
+          "value": 3750
+        },
+        "month": {
+          "value": "2021-08"
+        }
+      },
+      {
+        "date": {
+          "value": "2021-09-25"
+        },
+        "employer": {
+          "value": "NEED ALL COMPANY"
+        },
+        "amount": {
+          "value": 3750
+        },
+        "month": {
+          "value": "2021-09"
+        }
+      },
+      {
+        "date": {
+          "value": "2021-10-25"
+        },
+        "employer": {
+          "value": "NEED ALL COMPANY"
+        },
+        "amount": {
+          "value": 9375
+        },
+        "month": {
+          "value": "2021-10"
+        }
+      }
+    ],
+    "classification": "C"
+  },
+  "cpfbalances": {
+    "lastupdated": "2022-10-27",
+    "oa": {
+      "value": 227700
+    },
+    "source": "1",
+    "classification": "C",
+    "ma": {
+      "value": 79200
+    },
+    "sa": {
+      "value": 59400
+    }
+  },
+  "birthcountry": {
+    "lastupdated": "2022-10-27",
+    "code": "SG",
+    "source": "1",
+    "classification": "C",
+    "desc": "SINGAPORE"
+  },
+  "residentialstatus": {
+    "lastupdated": "2022-10-27",
+    "code": "C",
+    "source": "1",
+    "classification": "C",
+    "desc": "CITIZEN"
+  },
+  "aliasname": {
+    "lastupdated": "2022-10-27",
+    "source": "1",
+    "classification": "C",
+    "value": ""
+  },
+  "marriedname": {
+    "lastupdated": "2022-10-27",
+    "source": "1",
+    "classification": "C",
+    "value": "MR HOWARD CHEN YU SHENG"
+  },
+  "passtype": {
+    "lastupdated": "2022-10-27",
+    "code": "",
+    "source": "3",
+    "classification": "C",
+    "desc": ""
+  },
+  "noahistory": {
+    "noas": [
+      {
+        "amount": {
+          "value": 214500
+        },
+        "trade": {
+          "value": 0
+        },
+        "interest": {
+          "value": 32000
+        },
+        "yearofassessment": {
+          "value": "2021"
+        },
+        "taxclearance": {
+          "value": "N"
+        },
+        "employment": {
+          "value": 182500
+        },
+        "rent": {
+          "value": 0
+        },
+        "category": {
+          "value": "ORIGINAL"
+        }
+      },
+      {
+        "amount": {
+          "value": 202500
+        },
+        "trade": {
+          "value": 0
+        },
+        "interest": {
+          "value": 30000
+        },
+        "yearofassessment": {
+          "value": "2020"
+        },
+        "taxclearance": {
+          "value": "N"
+        },
+        "employment": {
+          "value": 172500
+        },
+        "rent": {
+          "value": 0
+        },
+        "category": {
+          "value": "ORIGINAL"
+        }
+      }
+    ],
+    "lastupdated": "2022-10-27",
+    "source": "1",
+    "classification": "C"
+  }
+}
