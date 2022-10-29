@@ -15,4 +15,8 @@ server_migrate:
 client_build:
 	cd client && npm run build
 
-
+start:
+	docker exec -it myinfodemo-server-1 bash -c 'python manage.py migrate'
+	docker exec -it myinfodemo-server-1 bash -c 'python manage.py collectstatic --no-input'
+	docker exec -it myinfodemo-server-1 bash -c 'python manage.py create_admin_user'
+	make client_build

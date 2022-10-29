@@ -27,6 +27,7 @@ services:
     environment:
       <<: *django-app-variables
       <<: *database-credentials
+      DJANGO_SUPERUSER_PASSWORD: "${DJANGO_SUPERUSER_PASSWORD}"
     depends_on:
       - "db"
 
@@ -37,8 +38,8 @@ services:
       - "54321:5432"
     environment:
       <<: *database-credentials
-    volumes:
-      - ./mounts/db:/bitnami/postgresql
+    # volumes:
+    #   - ./mounts/db:/bitnami/postgresql
 
   httpd:
     restart: on-failure:5

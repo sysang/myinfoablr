@@ -16,6 +16,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'myinfoablr',
+    'myinfoapi',
     'corsheaders',
 
     'django.contrib.admin',

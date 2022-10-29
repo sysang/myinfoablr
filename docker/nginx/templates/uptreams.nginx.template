@@ -6,5 +6,5 @@ upstream app_server {
     # server unix:/tmp/myl/gunicorn.sock fail_timeout=0;
 
     # for a TCP configuration
-    server myinfoablr-server-1:8000 fail_timeout=0;
+    server myinfodemo-server-1:8000 fail_timeout=0;
 }
