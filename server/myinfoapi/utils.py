@@ -1,5 +1,6 @@
 from datetime import datetime
 from dpath.util import get as dpath_get
+from dpath.util import values as dpath_values
 
 
 def format_myinfo_data(data):
@@ -20,18 +21,30 @@ def format_myinfo_data(data):
     result['regadd_unit'] = dpath_get(data, 'regadd/unit/value')
     result['regadd_postal'] = dpath_get(data, 'regadd/postal/value')
     result['regadd_type'] = dpath_get(data, 'regadd/type')
-    result['noas'] = get_noas(data['noahistory'])
+
+    # Intentionally for test error handling
+    # result['noas'] = get_noas(dpath_values(data, 'noahistory/noas/*'))
+    result['noas'] = get_noas(dpath_get(data, 'noahistory/noas'))
+
     result['ownerprivate'] = dpath_get(data, 'ownerprivate/value')
-    result['cpfbalances_oa'] = dpath_get(data, 'cpfbalances/oa/value')
-    result['cpfbalances_sa'] = dpath_get(data, 'cpfbalances/sa/value')
-    result['cpfbalances_ma'] = dpath_get(data, 'cpfbalances/ma/value')
-    result['cpfcontributions'] = get_cpfcontributions(data['cpfcontributions'])
+
+    oa_value = dpath_values(data, 'cpfbalances/oa/value')
+    result['cpfbalances_oa'] = oa_value[0] if len(oa_value) else 0
+
+    sa_value = dpath_values(data, 'cpfbalances/sa/value')
+    result['cpfbalances_sa'] = sa_value[0] if len(sa_value) else 0
+
+    ma_value = dpath_values(data, 'cpfbalances/ma/value')
+    result['cpfbalances_ma'] = ma_value[0] if len(ma_value) else 0
+
+    cpfcontributions_value  = dpath_values(data, 'cpfcontributions/history/*')
+    result['cpfcontributions'] = get_cpfcontributions(cpfcontributions_value)
 
     return result
 
 def get_noas(noahistory):
     # guarantee list in descending order
-    sorted_noahistory = sorted(noahistory['noas'],
+    sorted_noahistory = sorted(noahistory,
         key=lambda item: int(item['yearofassessment']['value']), reverse=True)
 
     noas = []
@@ -56,7 +69,7 @@ def get_noas(noahistory):
 
 def get_cpfcontributions(cpfcontributions):
     # guarantee list in ascendint order
-    sorted_cpfcontributions = sorted(cpfcontributions['history'],
+    sorted_cpfcontributions = sorted(cpfcontributions,
         key=lambda item: datetime.strptime(item['date']['value'], '%Y-%m-%d'))
 
     history = []
