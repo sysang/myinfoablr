@@ -50,6 +50,11 @@ function Myinfo() {
             _readOnly[prop] = !!myinfo[prop]
         }
         setReadOnly(_readOnly)
+
+        const formElm = document.getElementById("myinfo-form")
+        if (formElm) {
+            formElm.scrollIntoView();
+        }
     }
 
     //@ts-ignore
@@ -59,7 +64,7 @@ function Myinfo() {
 
 
     return (
-        <Container className={`py-md-5 position-relative`} as="section">
+        <Container className={`py-5 position-relative`} as="section">
             {myinfo.isLoading &&
             <div className={`${styles.overlay} d-flex justify-content-center align-items-center`}>
                 <Spinner animation="border" variant="success" />
@@ -81,7 +86,7 @@ function Myinfo() {
                         </div>
                     </div>
                 </Col>
-                <Col md={6}>
+                <Col md={6} className="d-none d-md-block">
                     <div className="vh-100 d-flex align-items-center position-relative">
                         <div className={`${styles.cirlce} ${styles.cirlce_left}`}></div>
                         <div className={`${styles.cirlce} ${styles.cirlce_right}`}></div>
@@ -91,9 +96,9 @@ function Myinfo() {
                     </div>
                 </Col>
             </Row>
-            <Row className="justify-content-around">
+            <Row className="justify-content-around" id="myinfo-form">
                 <Col md={6}>
-                    <MyinfoForm readOnly={readOnly} myinfo={myinfo}/>
+                    <MyinfoForm readOnly={readOnly}/>
                 </Col>
             </Row>
             <ToastContainer

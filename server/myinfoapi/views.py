@@ -34,7 +34,7 @@ def get_authorise_url(request):
 @api_view(['POST'])
 def login(request):
     code = ""
-    access_token = ""
+    decoded_access_token = None
     sub = ""
 
     params = json.loads(request.body)
@@ -56,7 +56,7 @@ def login(request):
 
     except Exception as e:
         db_logger.error(f"Requesting to Mockpass got error. More information, \
-                code: {code}, access_token: {access_token}, \
+                code: {code}, decoded_access_token: {decoded_access_token}, \
                 sub: {sub}.", exc_info=e, stack_info=True)
 
         return RestResponse({'error': True, 'message': 'Bad Request'}, status=HTTP_400_BAD_REQUEST)
@@ -65,7 +65,7 @@ def login(request):
         formated_data = format_myinfo_data(person_data)
     except Exception as e:
         db_logger.error(f"Parsing person data got error. More information, \
-                code: {code}, access_token: {access_token}, \
+                code: {code}, decoded_access_token: {decoded_access_token}, \
                 sub: {sub}.", exc_info=e, stack_info=True)
 
         return RestResponse({'error': True, 'message': 'Server Error '}, status=HTTP_500_INTERNAL_SERVER_ERROR)

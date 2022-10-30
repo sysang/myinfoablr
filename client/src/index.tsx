@@ -6,9 +6,11 @@ import {
   Route,
 } from "react-router-dom";
 import { Provider } from 'react-redux';
-import { store } from './app/store';
+import { configureStore } from '@reduxjs/toolkit'
 
 import reportWebVitals from './reportWebVitals';
+
+import { setupStore } from './app/store';
 import './index.scss';
 import Myinfo from './pages/Myinfo';
 
@@ -26,6 +28,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const store = setupStore()
 
 root.render(
   <React.StrictMode>
