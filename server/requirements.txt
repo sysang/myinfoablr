@@ -8,3 +8,4 @@ jwcrypto~=1.4.2
 dpath~=2.0.6
 django-db-logger~=0.1.12
 djangorestframework~=3.10.3
+pytest~=7.2.0

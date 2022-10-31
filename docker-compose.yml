@@ -21,6 +21,7 @@ services:
       dockerfile: "Dockerfile"
     volumes:
       - "./server:/usr/src/app"
+      - "./client:/usr/src/www"
       - "./mounts/server/logs:/var/logs"
       - "./mounts/server/static:/var/static"
       - "./mounts/server/media:/var/media"
