@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name server.dsysang.site;
+    server_name server.localhost;
 
     include conf.d/common.conf;
     include conf.d/location_media.conf;
