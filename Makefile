@@ -34,3 +34,7 @@ start:
 
 docker_compose:
 	docker compose up -d --build
+
+docker_remove:
+	docker rm -f $$(docker ps --filter "name=myinfodemo" -a -q)
+
